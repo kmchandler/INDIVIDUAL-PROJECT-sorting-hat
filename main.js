@@ -28,11 +28,10 @@ const sortingPage = () => {
         <div class="card-body">
           <h5 class="card-title">Enter your name here to be sorted</h5>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">First and Last Name</label>
             <input type="name" class="form-control" id="studentName" placeholder="First and Last Name">
             </div>
-          <p class="card-text">Quotes from book about sorting hat go heres</p>
-          <a href="#performSorting" class="btn btn-primary">SORT</a>
+          <p class="card-text">Quotes from book about sorting hat go here</p>
+          <a id="performSorting" class="btn btn-primary">SORT</=>
         </div>
         </div>`
   
@@ -40,10 +39,23 @@ const sortingPage = () => {
     };
 
 
+const sortMe = () => {
+  const houseArray = [
+    Gryffindor,
+    Hufflepuff,
+    Ravenclaw,
+    Slytherin
+  ]
+
+  let randomHouse = Math.floor(Math.random() * houseArray.length); 
+  //this is where i left off- need to complete this section
+};
+
 
 const eventListeners = () => {
 
   document.querySelector("#openSortingPage").addEventListener("click", sortingPage);
+  document.querySelector("#performSorting").addEventListener("click", sortMe);
   
 
     // this goes in EVERY form submit to prevent page reload
