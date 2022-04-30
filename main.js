@@ -1,4 +1,3 @@
-const app = document.querySelector("#app");
 let domString = "";
 
 
@@ -14,7 +13,7 @@ const welcome = () => {
     <div class="card-body">
       <h5 class="card-title">I am the Hogwarts Sorting Hat</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a id="#openSortingPage" class="btn btn-primary">SORT</a>
+      <a id="openSortingPage" class="btn btn-primary">SORT</a>
     </div>
     </div>`
 
@@ -22,16 +21,14 @@ const welcome = () => {
 }
 
 
-const sortingPage = (evt) => {
-    const openSortingPage = evt.target.id
-      document.querySelector("#openSortingPage").addEventListener("click", (evt) => {
+const sortingPage = () => {
         domString = ""
-        domString = `
+        domString += `
         <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">Enter your name here to be sorted</h5>
           <div class="mb-3">
-            label for="exampleFormControlInput1" class="form-label">First and Last Name</label>
+            <label for="exampleFormControlInput1" class="form-label">First and Last Name</label>
             <input type="name" class="form-control" id="studentName" placeholder="First and Last Name">
             </div>
           <p class="card-text">Quotes from book about sorting hat go heres</p>
@@ -40,8 +37,7 @@ const sortingPage = (evt) => {
         </div>`
   
       renderToDom("#app", domString);
-    });
-}
+    };
 
 
 
@@ -63,6 +59,7 @@ const eventListeners = () => {
 
 const startApp = () => {
   welcome();
+  eventListeners();
 };
 
 startApp(); 
