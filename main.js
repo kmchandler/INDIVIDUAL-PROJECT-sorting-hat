@@ -47,10 +47,115 @@ const sortMe = () => {
     Slytherin
   ]
 
+  const students = [
+    {
+      id: 1,
+      name: "Kristen",
+      house: "Ravenclaw"
+    },
+    {
+      id: 2,
+      name: "Ryann",
+      house: "Gryffindor"
+    },
+    {
+      id: 3,
+      name: "Elizabeth",
+      house: "Slytherin"
+    },
+    {
+      id: 4,
+      name: "Shirley",
+      house: "Hufflepuff"
+    },
+  ]
+
   let randomHouse = Math.floor(Math.random() * houseArray.length); 
   //this is where i left off- need to complete this section
+
+
+  const gryffindorHouse = () => {
+    domString = ""
+    domString += `
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <img src="https://flyclipart.com/thumb2/harrypotter-gryffindor-lion-hogwarts-wizardfreetoedit-836029.png" id="gryffindorCrest" class="houseCrest alt="the gryffindor crest"></img>
+      <h5 class="card-title">${students.name}, welcome to ${students.house}!</h5>
+      <p class="card-text">Info about Gryffinfor here</p>
+      <a id="gryffindorRoster" class="btn btn-primary">MEET YOUR HOUSEMATES</=>
+      <a id="schoolRoster" class="btn btn-primary">SCHOOL ROSTER</=>
+    </div>
+    </div>`
+
+  renderToDom("#app", domString);
+  };
+
+  const ravenclawHouse = () => {
+    domString = ""
+    domString += `
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <img src="https://www.pinclipart.com/picdir/middle/113-1138734_crest-png-for-free-download-on-harry-potter.png" id="ravenclawCrest" class="houseCrest alt="the ravenclaw crest"></img>
+      <h5 class="card-title">${students.name}, welcome to ${students.house}!</h5>
+      <p class="card-text">Info about Ravenclaw here</p>
+      <a id="gryffindorRoster" class="btn btn-primary">MEET YOUR HOUSEMATES</=>
+      <a id="schoolRoster" class="btn btn-primary">SCHOOL ROSTER</=>
+    </div>
+    </div>`
+
+  renderToDom("#app", domString);
+  };
+
+  const slytherinHouse = () => {
+    domString = ""
+    domString += `
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <img src="https://toppng.com/uploads/preview/slytherin-crest-slytherin-crest-clipart-harry-potter-slytherin-crest-11562871434vbfa2qke9n.png" id="slytherinCrest" class="houseCrest alt="the slytherin crest"></img>
+      <h5 class="card-title">${students.name}, welcome to ${students.house}!</h5>
+      <p class="card-text">Info about Slytherin here</p>
+      <a id="gryffindorRoster" class="btn btn-primary">MEET YOUR HOUSEMATES</=>
+      <a id="schoolRoster" class="btn btn-primary">SCHOOL ROSTER</=>
+    </div>
+    </div>`
+
+  renderToDom("#app", domString);
+  };
+
+  const hufflepuffHouse = () => {
+    domString = ""
+    domString += `
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <img src="https://www.pinclipart.com/picdir/middle/453-4537332_crest-banner-png-harry-potter-hufflepuff-crest-clipart.png" id="hufflepuffCrest" class="houseCrest alt="the slytherin crest"></img>
+      <h5 class="card-title">${students.name}, welcome to ${students.house}!</h5>
+      <p class="card-text">Info about Hufflepuff here</p>
+      <a id="gryffindorRoster" class="btn btn-primary">MEET YOUR HOUSEMATES</=>
+      <a id="schoolRoster" class="btn btn-primary">SCHOOL ROSTER</=>
+    </div>
+    </div>`
+
+  renderToDom("#app", domString);
+  };
 };
 
+
+const fullRoster = () => {
+  domString = ""
+  domString += `
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Hogwarts Roster/h5>
+    <a id="performSorting" class="btn btn-primary">GRYFFINDOR</=>
+    <a id="performSorting" class="btn btn-primary">HUFFLEPUFF</=>
+    <a id="performSorting" class="btn btn-primary">RAVENCLAW</=>
+    <a id="performSorting" class="btn btn-primary">SLYTHERIN</=>
+    <a id="performSorting" class="btn btn-primary">FULL ROSTER</=>
+  </div>
+  </div>`
+
+  renderToDom("#app", domString);
+};
 
 const eventListeners = () => {
 
