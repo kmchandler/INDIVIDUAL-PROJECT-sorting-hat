@@ -25,8 +25,17 @@ const welcome = () => {
 const sortingPage = () => {
         domString = ""
         domString += `
-        <div class="card" style="width: 18rem;">
-        <div class="card-body">
+          <div id="buttonDiv" class="buttonDiv">
+            <button id="gryffindor" class="btn btn-primary">GRYFFINDOR</button>
+            <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
+            <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
+            <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
+            <button id="fullRoster" class="btn btn-primary" "fullRoster">FULL ROSTER</button>
+            <button id="sort" class="btn btn-primary">SORTING HAT</button>
+            <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
+          </div> 
+          <div class="card" style="width: 18rem;">
+          <div class="card-body">
           <h5 class="card-title">Enter your name here to be sorted</h5>
           <div class="mb-3">
             <form>
@@ -35,33 +44,87 @@ const sortingPage = () => {
             </div>
           <p class="card-text">Quotes from book about sorting hat go here</p>
           <button id="performSorting" class="btn btn-primary">SORT</button>
-        </div>
-        </div>`
+         </div>
+         </div>`
 
   
       renderToDom("#app", domString);
 
       document.querySelector("#performSorting").addEventListener("click", sortingHat);
+      houseListeners();
     };
 
 
     const cardsOnDom = (taco) => {
       let domString = "";
-      taco.forEach((student) => {
-         domString += `<div id="studentCard" class="card">
-          <h5 class="card-header">${student.name}
-          <button class="btn btn-danger" id="expel--${student.id}">EXPEL</button>
-          </h5>
-          <img id="crest" class="image" src="https://www.seekpng.com/png/detail/184-1840987_product-image-alt-harry-potter-hogwarts-crest-doormat.png">
-          <div class="card-body">
-            <h5 class="card-title"></h5>
-          </div>
-          <div class="card-footer ${student.house}-footer">${student.house}</div>
+
+      domString += `
+          <div id="buttonDiv" class="buttonDiv">
+            <button id="gryffindor" class="btn btn-primary">GRYFFINDOR</button>
+            <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
+            <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
+            <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
+            <button id="fullRoster" class="btn btn-primary" "fullRoster">FULL ROSTER</button>
+            <button id="sort" class="btn btn-primary">SORTING HAT</button>
+            <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
           </div>`
+
+      taco.forEach((student) => {
+         domString += `
+         <div class="card" style="width: 20rem;">
+         <div id="studentCard" class="card">
+            <h5 class="card-header">${student.name}
+            <button class="btn btn-danger" id="expel--${student.id}">EXPEL</button>
+            </h5>
+            <img id="crest" class="image" src="https://www.seekpng.com/png/detail/184-1840987_product-image-alt-harry-potter-hogwarts-crest-doormat.png">
+            <div class="card-body">
+            <h5 class="card-title"></h5>
+            </div>
+            <div class="card-footer ${student.house}-footer">${student.house}</div>
+         </div>
+         </div>`
         });
     
         renderToDom("#app", domString);
+
         expelStudent();
+        houseListeners();
+    };
+
+
+    const deathEatersOnDom = (taco) => {
+      let domString = "";
+
+      domString += `
+          <div id="buttonDiv" class="buttonDiv">
+            <button id="gryffindor" class="btn btn-primary">GRYFFINDOR</button>
+            <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
+            <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
+            <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
+            <button id="fullRoster" class="btn btn-primary" "fullRoster">FULL ROSTER</button>
+            <button id="sort" class="btn btn-primary">SORTING HAT</button>
+          </div>`
+
+      taco.forEach((student) => {
+         domString += `
+         <div class="card" style="width: 20rem;">
+         <div id="studentCard" class="card">
+            <h5 class="card-header">${student.name}
+            <button class="btn btn-danger" id="enroll--${student.id}">ENROLL</button>
+            </h5>
+            <img id="crest" class="image" src="http://cdn.shopify.com/s/files/1/0046/5498/9386/products/STE-CHARA-B37__95684.1493873088.1280.1280_1200x630.jpg?v=1551483846">
+            <div class="card-body">
+            <h5 class="card-title"></h5>
+            </div>
+            <div class="card-footer "deathEater-footer">Death Eater</div>
+         </div>
+         </div>`
+        });
+    
+        renderToDom("#app", domString);
+
+        enrollStudent();
+        houseListeners();
     };
 
 
@@ -72,8 +135,9 @@ const houseListeners = () => {
   document.querySelector("#ravenclaw").addEventListener("click", filter)
   document.querySelector("#slytherin").addEventListener("click", filter)
   document.querySelector("#gryffindor").addEventListener("click", filter)
-  document.querySelector("#sort").addEventListener("click", filter)
+  document.querySelector("#sort").addEventListener("click", sortingPage)
   document.querySelector("#deathEaters").addEventListener("click", filter)
+  document.querySelector("#fullRoster").addEventListener("click", filter)
 }
 
 const filter = (evt) => {
@@ -90,7 +154,7 @@ const filter = (evt) => {
  const gryffindorHouse = (student) => {
    domString = ""
    domString += `
-    <div id="buttonDiv-g" class="buttonDiv">
+    <div id="buttonDiv" class="buttonDiv">
       <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
       <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
       <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
@@ -98,7 +162,7 @@ const filter = (evt) => {
       <button id="sort" class="btn btn-primary">SORTING HAT</button>
       <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
     </div>
-    
+
     <div class="card" style="width: 18rem;">
     <div class="card-body">
       <img src="https://i.pinimg.com/originals/5e/89/88/5e89889df44a4a0782851eba00012434.png" id="gryffindorCrest" class="houseCrest alt="the gryffindor crest"></img>
@@ -115,7 +179,7 @@ const filter = (evt) => {
 const hufflepuffHouse = (student) => {
   domString = ""
   domString += `
-  <div id="buttonDiv-h" class="buttonDiv">
+  <div id="buttonDiv" class="buttonDiv">
     <button id="gryffindor" class="btn btn-primary">GRYFFINDOR</button>
     <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
     <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
@@ -123,6 +187,7 @@ const hufflepuffHouse = (student) => {
     <button id="sort" class="btn btn-primary">SORTING HAT</button>
     <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
   </div>
+
   <div class="card" style="width: 18rem;">
   <div class="card-body">
     <img src="https://i.ebayimg.com/images/g/V6AAAOSwIuNeZ1~M/s-l400.jpg" id="hufflepuffCrest" class="houseCrest alt="the slytherin crest"></img>
@@ -141,7 +206,7 @@ const hufflepuffHouse = (student) => {
 const ravenclawHouse = (student) => {
   domString = ""
   domString += `
-    <div id="buttonDiv-r" class="buttonDiv">
+    <div id="buttonDiv" class="buttonDiv">
       <button id="gryffindor" class="btn btn-primary">GRYFFINDOR</button>
       <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
       <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
@@ -149,6 +214,7 @@ const ravenclawHouse = (student) => {
       <button id="sort" class="btn btn-primary">SORTING HAT</button>
       <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
     </div>
+
     <div class="card" style="width: 18rem;">
     <div class="card-body">
       <img src="https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88363/91130/Harry-Potter-Ravenclaw-Crest-Official-wall-mounted-cardboard-cutout-buy-now-at-star__86173.1507642983.jpg?c=2" id="ravenclawCrest" class="houseCrest alt="the ravenclaw crest"></img>
@@ -165,7 +231,7 @@ const ravenclawHouse = (student) => {
 const slytherinHouse = (student) => {
   domString = ""
   domString += ` 
-  <div id="buttonDiv-s" class="buttonDiv">
+  <div id="buttonDiv" class="buttonDiv">
     <button id="gryffindor" class="btn btn-primary">GRYFFINDOR</button>
     <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
     <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
@@ -173,6 +239,7 @@ const slytherinHouse = (student) => {
     <button id="sort" class="btn btn-primary">SORTING HAT</button>
     <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
   </div>
+
   <div class="card" style="width: 18rem;">
   <div class="card-body">
     <img src="https://m.media-amazon.com/images/I/71jTE5obH-L._AC_SL1200_.jpg" id="slytherinCrest" class="houseCrest alt="the slytherin crest"></img>
@@ -234,7 +301,7 @@ const students = [
   },
   {
     id: 7,
-    name: "Meghan Womackr",
+    name: "Meghan Womack",
     house: "Slytherin",
     deathEater: false
   },
@@ -309,13 +376,24 @@ const deathEaters = [
 
 const expelStudent = () => {
   document.querySelector("#app").addEventListener("click", (evt) => {
-  
   if (evt.target.id.includes("expel")) {
     const [method, id] = evt.target.id.split("--");
     const index = students.findIndex(student => student.id === parseInt(id)); 
     const remove = students.splice(index, 1)
     deathEaters.push(...remove);
-    cardsOnDom(deathEaters);
+    deathEatersOnDom(deathEaters);
+  }
+})
+};
+
+const enrollStudent = () => {
+  document.querySelector("#app").addEventListener("click", (evt) => {
+  if (evt.target.id.includes("enroll")) {
+    const [method, id] = evt.target.id.split("--");
+    const index = deathEaters.findIndex(deathEater => deathEater.id === parseInt(id)); 
+    const remove = deathEaters.splice(index, 1)
+    students.push(...remove);
+    cardsOnDom(students);
   }
 })
 };
