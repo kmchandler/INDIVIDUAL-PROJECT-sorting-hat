@@ -1,4 +1,130 @@
+body {
+  background-color: black;
+}
+
 #studentCard {
-  /* max-width: 40%;
-  max-height: 40%; */
+ 
+}
+
+#welcomeCard {
+  background-color: lightgray;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  margin-top: 30px;
+}
+
+#openSortingPage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-title {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.card-text {
+  text-align: center;
+  font-style: italic;
+}
+
+#sortingCard {
+  background-color: lightgray;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  margin-top: 30px;
+}
+
+.buttonDiv {
+  display: flex;
+  max-width: 70%;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30px;
+}
+
+#studentNameForm {
+  text-align: center;
+}
+
+#performSorting {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+  
+
+#gryffindorCard {
+  background-color: lightgray;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  margin-top: 30px;
+}
+
+#hufflepuffCard {
+  background-color: lightgray;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  margin-top: 30px;
+}
+
+#ravenclawCard {
+  background-color: lightgray;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  margin-top: 30px;
+}
+
+#slytherinCard {
+  background-color: lightgray;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  margin-top: 30px;
+}
+
+#gryffindorCrest {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+#hufflepuffCrest {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+#ravenclawCrest {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+#slytherinCrest {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+.housematesBtn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

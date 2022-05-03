@@ -9,14 +9,25 @@ const renderToDom = (divId, textToRender) => {
 //beginning of first card methods
 const welcome = () => {
   domString += `
-    <div class="card" style="width: 18rem;">
-    <img src="https://img1.cgtrader.com/items/2090935/d046b609f9/harry-potter-hat-sorting-hat-3d-model-low-poly-max-obj-fbx-stl-mat.jpg" class="card-img-top" alt="a picture of the hogwarts sorting hat"></img>
-    <div class="card-body">
-      <h5 class="card-title">I am the Hogwarts Sorting Hat</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <button id="openSortingPage" class="btn btn-primary">SORT</button>
-    </div>
-    </div>`
+      <div id="welcomeCard" class="card">
+      <img src="https://assets.mugglenet.com/wp-content/uploads/2018/06/The-Sorting-Hat-Stool-Minerva-McGonall-1.jpeg" class="card-img-top" alt="a picture of the hogwarts sorting hat"></img>
+      <div class="card-body">
+        <h5 class="card-title">Hogwarts Sorting Hat</h5>
+        <p class="card-text">"Oh, you may not think I'm pretty,
+        but don't judge on what you see,
+        I'll eat myself if you can find
+        a smarter hat than me.
+        You can keep your bowlers black,
+        your top hats sleek and tall,
+        for I'm the Hogwarts Sorting Hat
+        and I can cap them all.
+        There's nothing hidden in your head
+        the Sorting Hat can't see,
+        so try me on and I will tell you
+        where you ought to be."</p>
+        <button id="openSortingPage" class="btn btn-primary">SORT</button>
+      </div>
+      </div>`
 
   renderToDom("#app", domString);
 }
@@ -34,15 +45,18 @@ const sortingPage = () => {
             <button id="sort" class="btn btn-primary">SORTING HAT</button>
             <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
           </div> 
-          <div class="card" style="width: 18rem;">
+          <div id="sortingCard" class="card">
           <div class="card-body">
-          <h5 class="card-title">Enter your name here to be sorted</h5>
+          <h5 class="card-title">Enter Name to be Sorted</h5>
           <div class="mb-3">
             <form>
             <input type="name" class="form-control" id="studentNameForm" placeholder="First and Last Name">
             </form>
             </div>
-          <p class="card-text">Quotes from book about sorting hat go here</p>
+          <p class="card-text">So put me on! Don't be afraid!
+          And don't get in a flap!
+          You're in safe hands (though I have none)
+          for I'm a Thinking Cap!"</p>
           <button id="performSorting" class="btn btn-primary">SORT</button>
          </div>
          </div>`
@@ -71,17 +85,16 @@ const sortingPage = () => {
 
       taco.forEach((student) => {
          domString += `
-         <div class="card" style="width: 20rem;">
-         <div id="studentCard" class="card">
-            <h5 class="card-header">${student.name}
-            <button class="btn btn-danger" id="expel--${student.id}">EXPEL</button>
-            </h5>
-            <img id="crest" class="image" src="https://www.seekpng.com/png/detail/184-1840987_product-image-alt-harry-potter-hogwarts-crest-doormat.png">
-            <div class="card-body">
-            <h5 class="card-title"></h5>
+         <div id="domCards class="card">
+            <div id="studentCard" class="card">
+                <h5 class="card-header">${student.name}
+                  <button class="btn btn-danger" id="expel--${student.id}">EXPEL</button>
+                </h5>
+                <div class="card-body">
+                   <img id="crest" class="image" src="https://www.seekpng.com/png/detail/184-1840987_product-image-alt-harry-potter-hogwarts-crest-doormat.png">
+                </div>
+                <div class="card-footer ${student.house}-footer">${student.house}</div>
             </div>
-            <div class="card-footer ${student.house}-footer">${student.house}</div>
-         </div>
          </div>`
         });
     
@@ -163,12 +176,14 @@ const filter = (evt) => {
       <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
     </div>
 
-    <div class="card" style="width: 18rem;">
+    <div id="gryffindorCard" class="card">
     <div class="card-body">
       <img src="https://i.pinimg.com/originals/5e/89/88/5e89889df44a4a0782851eba00012434.png" id="gryffindorCrest" class="houseCrest alt="the gryffindor crest"></img>
       <h5 class="card-title">${student.name}, welcome to Gryffindor!</h5>
-      <p class="card-text">Info about Gryffinfor here</p>
-      <button id="gryffindor" class="btn btn-primary">MEET YOUR HOUSEMATES</button>
+      <p class="card-text">You belong in Gryffindor,
+      where dwell the brave at heart,
+      Their daring, nerve, and chivalry Set Gryffindors apart.</p>
+      <button id="gryffindor" class="housematesBtn">MEET YOUR HOUSEMATES</button>
     </div>
     </div>`
 
@@ -188,12 +203,14 @@ const hufflepuffHouse = (student) => {
     <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
   </div>
 
-  <div class="card" style="width: 18rem;">
+  <div id="hufflepuffCard" class="card">
   <div class="card-body">
     <img src="https://i.ebayimg.com/images/g/V6AAAOSwIuNeZ1~M/s-l400.jpg" id="hufflepuffCrest" class="houseCrest alt="the slytherin crest"></img>
     <h5 class="card-title">${student.name}, welcome to Hufflepuff!</h5>
-    <p class="card-text">Info about Hufflepuff here</p>
-    <button id="hufflepuff" class="btn btn-primary">MEET YOUR HOUSEMATES</button>
+    <p class="card-text">You belong in Hufflepuff,
+    where they are just and loyal.
+    Those patient Hufflepuffis are true and unafraid of toil.</p>
+    <button id="hufflepuff" class="housematesBtn">MEET YOUR HOUSEMATES</button>
   </div>
   </div>`
 
@@ -215,12 +232,15 @@ const ravenclawHouse = (student) => {
       <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
     </div>
 
-    <div class="card" style="width: 18rem;">
+    <div id="ravenclawCard" class="card">
     <div class="card-body">
       <img src="https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88363/91130/Harry-Potter-Ravenclaw-Crest-Official-wall-mounted-cardboard-cutout-buy-now-at-star__86173.1507642983.jpg?c=2" id="ravenclawCrest" class="houseCrest alt="the ravenclaw crest"></img>
       <h5 class="card-title">${student.name}, welcome to Ravenlaw!</h5>
-      <p class="card-text">Info about Ravenclaw here</p>
-      <button id="ravenclaw" class="btn btn-primary">MEET YOUR HOUSEMATES</button>
+      <p class="card-text">You belong in wise old Ravenclaw,
+      for you've a ready mind,
+      where those of wit and learning,
+      will always find their kind</p>
+      <button id="ravenclaw" class="housematesBtn">MEET YOUR HOUSEMATES</button>
     </div>
     </div>`  
 
@@ -240,12 +260,15 @@ const slytherinHouse = (student) => {
     <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
   </div>
 
-  <div class="card" style="width: 18rem;">
+  <div id="slytherinCard" class="card">
   <div class="card-body">
     <img src="https://m.media-amazon.com/images/I/71jTE5obH-L._AC_SL1200_.jpg" id="slytherinCrest" class="houseCrest alt="the slytherin crest"></img>
     <h5 class="card-title">${student.name}, welcome to Slytherin!</h5>
-    <p class="card-text">Info about Slytherin here</p>
-    <button id="slytherin" class="btn btn-primary">MEET YOUR HOUSEMATES</button>
+    <p class="card-text">You belong in Slytherin
+    where you'll make your real friends.
+    Those cunning folk use any means
+    to achieve their ends.</p>
+    <button id="slytherin" class="housematesBtn">MEET YOUR HOUSEMATES</button>
   </div>
   </div>`
 
