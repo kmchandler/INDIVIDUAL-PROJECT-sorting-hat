@@ -1,9 +1,28 @@
 body {
-  background-color: black;
+  background-image: url(https://i.ytimg.com/vi/4qxUAoFOd4s/maxresdefault.jpg);
 }
 
-#studentCard {
- 
+#cardContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+#deathEaterCards {
+  padding: 20px;
+  max-width: 30%;
+  margin-bottom: 20px;
+}
+
+#studentDomCards {
+  padding: 20px;
+  max-width: 30%;
+  margin-bottom: 20px;
+}
+
+#crest {
+  max-width: 100%;
 }
 
 #welcomeCard {
@@ -42,9 +61,8 @@ body {
 
 .buttonDiv {
   display: flex;
-  max-width: 70%;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
+  gap: 15px;
   margin-top: 30px;
 }
 
@@ -127,4 +145,95 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.btn-danger {
+  background-color: black ;
+  border: black;
+  float: right;
+  color: white;
+  }
+
+.Gryffindor-footer {
+  background-color: #c70a4e;
+  text-align: center;
+  color: white;
+}
+
+.Hufflepuff-footer {
+  background-color: #fecb00;
+  text-align: center;
+  color: white;
+}
+
+.Ravenclaw-footer {
+  background-color: #658ec6;
+  text-align: center;
+  color: white;
+}
+
+.Slytherin-footer {
+  background-color: #005b4a;
+  text-align: center;
+  color: white;
+}
+
+.deathEater-footer {
+  background-color: black;
+  text-align: center;
+  color: white;
+}
+
+#gryffindor {
+  background-color: #c70a4e;
+  border: #c70a4e;
+  color: white;
+}
+
+#hufflepuff {
+  background-color: #fecb00;
+  border :#fecb00;
+  color: black;
+}
+
+#ravenclaw {
+  background-color: #658ec6;
+  border: #658ec6;
+  color: white;
+}
+
+#slytherin {
+  background-color: #005b4a;
+  border: #005b4a;
+  color: white;
+}
+
+#deathEaters {
+  background-color: white;
+  border: white;
+  color: black;
+}
+
+#sort {
+  background-color: #58361d;
+  border: #58361d;
+  color: white;
+}
+
+#fullRoster {
+  background-color: #ffb347;
+  border: #ffb347;
+  color: black;
+}
+
+#performSorting {
+  background-color:#c70a4e;
+  border: #c70a4e;
+  color: white;
+}
+
+#openSortingPage {
+  background-color: #c70a4e;
+  border: #c70a4e;
+  color: white;
 }
