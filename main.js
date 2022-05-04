@@ -44,7 +44,7 @@ const sortingPage = () => {
         <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
         <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
         <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
-        <button id="fullRoster" class="btn btn-primary" "fullRoster">FULL ROSTER</button>
+        <button id="fullRoster" class="btn btn-primary fullRoster">FULL ROSTER</button>
         <button id="deathEaters" class="btn btn-primary">DEATH EATERS</button>
       </div>`
 
@@ -70,6 +70,7 @@ const sortingPage = () => {
       renderToDom("#buttonContainer", buttonString)
 
       document.querySelector("#performSorting").addEventListener("click", sortingHat);
+
       houseListeners();
     };
 
@@ -121,7 +122,7 @@ const sortingPage = () => {
             <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
             <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
             <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
-            <button id="fullRoster" class="btn btn-primary fullRoster">FULL ROSTER</button>
+            <button id="fullRoster" class="btn btn-primary">FULL ROSTER</button>
             <button id="sort" class="btn btn-primary">SORTING HAT</button>
           </div>`
 
@@ -155,9 +156,21 @@ const houseListeners = () => {
   document.querySelector("#ravenclaw").addEventListener("click", filter)
   document.querySelector("#slytherin").addEventListener("click", filter)
   document.querySelector("#gryffindor").addEventListener("click", filter)
-  document.querySelector("#sort").addEventListener("click", sortingPage)
-  document.querySelector("#deathEaters").addEventListener("click", filter)
-  document.querySelector("#fullRoster").addEventListener("click", filter)
+
+  const sortBtn = document.querySelector("#sort")
+  if (sortBtn !== null) {
+    sortBtn.addEventListener("click", sortingPage)
+  }
+
+  const deathEatersBtn = document.querySelector("#deathEaters")
+  if (deathEatersBtn !== null) {
+    deathEatersBtn.addEventListener("click", filter)
+  }
+
+  const fullRosterBtn = document.querySelector("#fullRoster")
+  if (fullRosterBtn !== null) {
+    fullRosterBtn.addEventListener("click", filter)
+  }
 }
 
 const filter = (evt) => {
@@ -198,7 +211,7 @@ const filter = (evt) => {
     </div>`
 
     renderToDom("#buttonContainer", buttonString);
-    renderToDom("cardContainer", cardString);
+    renderToDom("#cardContainer", cardString);
     houseListeners();
  }
 
@@ -232,7 +245,6 @@ const hufflepuffHouse = (student) => {
   renderToDom("#cardContainer", cardString);
   houseListeners();
 };
-
 
   
 const ravenclawHouse = (student) => {
@@ -431,6 +443,7 @@ const expelStudent = () => {
     deathEatersOnDom(deathEaters);
   }
 })
+ document.querySelector("#cardContainer").removeEventListener("click", (evt))
 };
 
 const enrollStudent = () => {
@@ -443,6 +456,7 @@ const enrollStudent = () => {
     cardsOnDom(students);
   }
 })
+
 };
 
 
