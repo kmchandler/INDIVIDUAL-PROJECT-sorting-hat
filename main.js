@@ -1,4 +1,5 @@
-let domString = "";
+let cardString = "";
+let buttonString = "";
 
 
 const renderToDom = (divId, textToRender) => {
@@ -8,7 +9,7 @@ const renderToDom = (divId, textToRender) => {
 
 //beginning of first card methods
 const welcome = () => {
-  domString += `
+  cardString += `
       <div id="welcomeCard" class="card">
       <img src="https://assets.mugglenet.com/wp-content/uploads/2018/06/The-Sorting-Hat-Stool-Minerva-McGonall-1.jpeg" class="card-img-top" alt="a picture of the hogwarts sorting hat"></img>
       <div class="card-body">
@@ -29,40 +30,44 @@ const welcome = () => {
       </div>
       </div>`
 
-  renderToDom("#app", domString);
+  renderToDom("#cardContainer", cardString);
 }
 
 //beginning of second card methods
 const sortingPage = () => {
-        domString = ""
-        domString += `
-          <div id="buttonDiv" class="buttonDiv">
-            <button id="gryffindor" class="btn btn-primary">GRYFFINDOR</button>
-            <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
-            <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
-            <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
-            <button id="fullRoster" class="btn btn-primary" "fullRoster">FULL ROSTER</button>
-            <button id="sort" class="btn btn-primary">SORTING HAT</button>
-            <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
-          </div> 
-          <div id="sortingCard" class="card">
-          <div class="card-body">
-          <h5 class="card-title">Enter Name to be Sorted</h5>
-          <div class="mb-3">
-            <form>
-            <input type="name" class="form-control" id="studentNameForm" placeholder="First and Last Name">
-            </form>
-            </div>
-          <p class="card-text">So put me on! Don't be afraid!
-          And don't get in a flap!
-          You're in safe hands (though I have none)
-          for I'm a Thinking Cap!"</p>
-          <button id="performSorting" class="btn btn-primary">SORT</button>
-         </div>
-         </div>`
+    cardString = ""
+    buttonString = ""
+    
+    buttonString += `
+      <div id="buttonDiv" class="buttonDiv">
+        <button id="gryffindor" class="btn btn-primary">GRYFFINDOR</button>
+        <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
+        <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
+        <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
+        <button id="fullRoster" class="btn btn-primary" "fullRoster">FULL ROSTER</button>
+        <button id="deathEaters" class="btn btn-primary">DEATH EATERS</button>
+      </div>`
+
+    cardString +=`
+      <div id="sortingCard" class="card">
+      <div class="card-body">
+      <h5 class="card-title">Enter Name to be Sorted</h5>
+      <div class="mb-3">
+        <form>
+        <input type="name" class="form-control" id="studentNameForm" placeholder="First and Last Name">
+        </form>
+        </div>
+      <p class="card-text">So put me on! Don't be afraid!
+      And don't get in a flap!
+      You're in safe hands (though I have none)
+      for I'm a Thinking Cap!"</p>
+      <button id="performSorting" class="btn btn-primary">SORT</button>
+      </div>
+      </div>`
 
   
-      renderToDom("#app", domString);
+      renderToDom("#cardContainer", cardString);
+      renderToDom("#buttonContainer", buttonString)
 
       document.querySelector("#performSorting").addEventListener("click", sortingHat);
       houseListeners();
@@ -70,23 +75,24 @@ const sortingPage = () => {
 
 
     const cardsOnDom = (taco) => {
-      let domString = "";
+      cardString = ""
+      buttonString = ""
 
-      domString += `
+      buttonString += `
           <div id="buttonDiv" class="buttonDiv">
             <button id="gryffindor" class="btn btn-primary">GRYFFINDOR</button>
             <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
             <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
             <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
-            <button id="fullRoster" class="btn btn-primary" "fullRoster">FULL ROSTER</button>
+            <button id="fullRoster" class="btn btn-primary fullRoster">FULL ROSTER</button>
             <button id="sort" class="btn btn-primary">SORTING HAT</button>
-            <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
+            <button id="deathEaters" class="btn btn-primary">DEATH EATERS</button>
           </div>`
 
       taco.forEach((student) => {
-         domString += `
-         <div id="domCards class="card">
-            <div id="studentCard" class="card">
+        cardString += `
+         <div id="studentDomCards" class="card">
+            <div id="studentCardOnDom" class="card">
                 <h5 class="card-header">${student.name}
                   <button class="btn btn-danger" id="expel--${student.id}">EXPEL</button>
                 </h5>
@@ -98,29 +104,30 @@ const sortingPage = () => {
          </div>`
         });
     
-        renderToDom("#app", domString);
-
+        renderToDom("#buttonContainer", buttonString);
+        renderToDom("#cardContainer", cardString);
         expelStudent();
         houseListeners();
     };
 
 
     const deathEatersOnDom = (taco) => {
-      let domString = "";
+      cardString = ""
+      buttonString = ""
 
-      domString += `
+      buttonString += `
           <div id="buttonDiv" class="buttonDiv">
             <button id="gryffindor" class="btn btn-primary">GRYFFINDOR</button>
             <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
             <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
             <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
-            <button id="fullRoster" class="btn btn-primary" "fullRoster">FULL ROSTER</button>
+            <button id="fullRoster" class="btn btn-primary fullRoster">FULL ROSTER</button>
             <button id="sort" class="btn btn-primary">SORTING HAT</button>
           </div>`
 
       taco.forEach((student) => {
-         domString += `
-         <div class="card" style="width: 20rem;">
+        cardString += `
+         <div id="deathEaterCards" class="card">
          <div id="studentCard" class="card">
             <h5 class="card-header">${student.name}
             <button class="btn btn-danger" id="enroll--${student.id}">ENROLL</button>
@@ -129,13 +136,13 @@ const sortingPage = () => {
             <div class="card-body">
             <h5 class="card-title"></h5>
             </div>
-            <div class="card-footer "deathEater-footer">Death Eater</div>
+            <div class="card-footer deathEater-footer">Death Eater</div>
          </div>
          </div>`
         });
     
-        renderToDom("#app", domString);
-
+        renderToDom("#buttonContainer", buttonString);
+        renderToDom("#cardContainer", cardString);
         enrollStudent();
         houseListeners();
     };
@@ -158,26 +165,29 @@ const filter = (evt) => {
     if (filterText === "fullRoster") {
       cardsOnDom(students); 
     } else if (filterText === "deathEaters") {
-      cardsOnDom(deathEaters);
+      deathEatersOnDom(deathEaters);
     } else {
       cardsOnDom(students.filter(student => student.house.toLowerCase() === filterText));
     }
   }
 
  const gryffindorHouse = (student) => {
-   domString = ""
-   domString += `
+   cardString = ""
+   buttonString = ""
+
+   buttonString += `
     <div id="buttonDiv" class="buttonDiv">
       <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
       <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
       <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
       <button id="fullRoster" class="btn btn-primary "fullRoster">FULL ROSTER</button>
       <button id="sort" class="btn btn-primary">SORTING HAT</button>
-      <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
-    </div>
+      <button id="deathEaters" class="btn btn-primary">DEATH EATERS</button>
+    </div>`
 
-    <div id="gryffindorCard" class="card">
-    <div class="card-body">
+    cardString +=
+    `<div id="gryffindorCard" class="card">
+      <div class="card-body">
       <img src="https://i.pinimg.com/originals/5e/89/88/5e89889df44a4a0782851eba00012434.png" id="gryffindorCrest" class="houseCrest alt="the gryffindor crest"></img>
       <h5 class="card-title">${student.name}, welcome to Gryffindor!</h5>
       <p class="card-text">You belong in Gryffindor,
@@ -187,92 +197,106 @@ const filter = (evt) => {
     </div>
     </div>`
 
-    renderToDom("#app", domString);
+    renderToDom("#buttonContainer", buttonString);
+    renderToDom("cardContainer", cardString);
     houseListeners();
  }
 
 const hufflepuffHouse = (student) => {
-  domString = ""
-  domString += `
+  buttonString = ""
+  cardString = ""
+  
+  buttonString += `
   <div id="buttonDiv" class="buttonDiv">
     <button id="gryffindor" class="btn btn-primary">GRYFFINDOR</button>
     <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
     <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
     <button id="fullRoster" class="btn btn-primary" "fullRoster">FULL ROSTER</button>
     <button id="sort" class="btn btn-primary">SORTING HAT</button>
-    <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
-  </div>
+    <button id="deathEaters" class="btn btn-primary">DEATH EATERS</button>
+  </div>`
 
-  <div id="hufflepuffCard" class="card">
-  <div class="card-body">
+  cardString +=
+  `<div id="hufflepuffCard" class="card">
+    <div class="card-body">
     <img src="https://i.ebayimg.com/images/g/V6AAAOSwIuNeZ1~M/s-l400.jpg" id="hufflepuffCrest" class="houseCrest alt="the slytherin crest"></img>
     <h5 class="card-title">${student.name}, welcome to Hufflepuff!</h5>
     <p class="card-text">You belong in Hufflepuff,
     where they are just and loyal.
     Those patient Hufflepuffis are true and unafraid of toil.</p>
-    <button id="hufflepuff" class="housematesBtn">MEET YOUR HOUSEMATES</button>
+    <button id="hufflepuff" class="btn btn-primary housematesBtn">MEET YOUR HOUSEMATES</button>
   </div>
   </div>`
 
-  renderToDom("#app", domString);
+  renderToDom("#buttonContainer", buttonString);
+  renderToDom("#cardContainer", cardString);
   houseListeners();
 };
 
 
   
 const ravenclawHouse = (student) => {
-  domString = ""
-  domString += `
+  buttonString = ""
+  cardString = ""
+
+  buttonString += `
     <div id="buttonDiv" class="buttonDiv">
       <button id="gryffindor" class="btn btn-primary">GRYFFINDOR</button>
       <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
       <button id="slytherin" class="btn btn-primary">SLYTHERIN</button>
       <button id="fullRoster" class="btn btn-primary" "fullRoster" >FULL ROSTER</button>
       <button id="sort" class="btn btn-primary">SORTING HAT</button>
-      <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
-    </div>
+      <button id="deathEaters" class="btn btn-primary">DEATH EATERS</button>
+    </div>`
 
-    <div id="ravenclawCard" class="card">
+  cardString +=
+  `<div id="ravenclawCard" class="card">
     <div class="card-body">
-      <img src="https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88363/91130/Harry-Potter-Ravenclaw-Crest-Official-wall-mounted-cardboard-cutout-buy-now-at-star__86173.1507642983.jpg?c=2" id="ravenclawCrest" class="houseCrest alt="the ravenclaw crest"></img>
-      <h5 class="card-title">${student.name}, welcome to Ravenlaw!</h5>
-      <p class="card-text">You belong in wise old Ravenclaw,
-      for you've a ready mind,
-      where those of wit and learning,
-      will always find their kind</p>
-      <button id="ravenclaw" class="housematesBtn">MEET YOUR HOUSEMATES</button>
-    </div>
-    </div>`  
+    <img src="https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88363/91130/Harry-Potter-Ravenclaw-Crest-Official-wall-mounted-cardboard-cutout-buy-now-at-star__86173.1507642983.jpg?c=2" id="ravenclawCrest" class="houseCrest alt="the ravenclaw crest"></img>
+    <h5 class="card-title">${student.name}, welcome to Ravenlaw!</h5>
+    <p class="card-text">You belong in wise old Ravenclaw,
+    for you've a ready mind,
+    where those of wit and learning,
+    will always find their kind</p>
+    <button id="ravenclaw" class="btn btn-primary housematesBtn">MEET YOUR HOUSEMATES</button>
+  </div>
+  </div>`  
 
-    renderToDom("#app", domString);
+    renderToDom("#buttonContainer", buttonString);
+    renderToDom("#cardContainer", cardString);
     houseListeners();
 };
   
 const slytherinHouse = (student) => {
-  domString = ""
-  domString += ` 
+  buttonString = ""
+  cardString = ""
+  
+
+  buttonString += ` 
   <div id="buttonDiv" class="buttonDiv">
     <button id="gryffindor" class="btn btn-primary">GRYFFINDOR</button>
     <button id="hufflepuff" class="btn btn-primary">HUFFLEPUFF</button>
     <button id="ravenclaw" class="btn btn-primary">RAVENCLAW</button>
     <button id="fullRoster" class="btn btn-primary" "fullRoster">FULL ROSTER</button>
     <button id="sort" class="btn btn-primary">SORTING HAT</button>
-    <button id="deathEaters" class="btn btn-primary" "deathEaters">DEATH EATERS</button>
-  </div>
+    <button id="deathEaters" class="btn btn-primary">DEATH EATERS</button>
+  </div>`
 
-  <div id="slytherinCard" class="card">
-  <div class="card-body">
+  cardString +=
+  `<div id="slytherinCard" class="card">
+    <div class="card-body">
     <img src="https://m.media-amazon.com/images/I/71jTE5obH-L._AC_SL1200_.jpg" id="slytherinCrest" class="houseCrest alt="the slytherin crest"></img>
     <h5 class="card-title">${student.name}, welcome to Slytherin!</h5>
     <p class="card-text">You belong in Slytherin
     where you'll make your real friends.
     Those cunning folk use any means
     to achieve their ends.</p>
-    <button id="slytherin" class="housematesBtn">MEET YOUR HOUSEMATES</button>
+    <button id="slytherin" class="btn btn-primary housematesBtn">MEET YOUR HOUSEMATES</button>
   </div>
   </div>`
 
-  renderToDom("#app", domString);
+  renderToDom("#buttonContainer", buttonString);
+  renderToDom("#cardContainer", cardString);
   houseListeners();
 };
 
@@ -398,7 +422,7 @@ const deathEaters = [
 //expel student to death eater array
 
 const expelStudent = () => {
-  document.querySelector("#app").addEventListener("click", (evt) => {
+  document.querySelector("#cardContainer").addEventListener("click", (evt) => {
   if (evt.target.id.includes("expel")) {
     const [method, id] = evt.target.id.split("--");
     const index = students.findIndex(student => student.id === parseInt(id)); 
@@ -410,7 +434,7 @@ const expelStudent = () => {
 };
 
 const enrollStudent = () => {
-  document.querySelector("#app").addEventListener("click", (evt) => {
+  document.querySelector("#cardContainer").addEventListener("click", (evt) => {
   if (evt.target.id.includes("enroll")) {
     const [method, id] = evt.target.id.split("--");
     const index = deathEaters.findIndex(deathEater => deathEater.id === parseInt(id)); 
