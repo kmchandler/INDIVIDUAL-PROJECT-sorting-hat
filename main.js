@@ -107,8 +107,11 @@ const sortingPage = () => {
     
         renderToDom("#buttonContainer", buttonString);
         renderToDom("#cardContainer", cardString);
-        expelStudent();
         houseListeners();
+
+        taco.forEach((student) => { 
+          expelStudent(student);
+        });
     };
 
 
@@ -144,8 +147,11 @@ const sortingPage = () => {
     
         renderToDom("#buttonContainer", buttonString);
         renderToDom("#cardContainer", cardString);
-        enrollStudent();
         houseListeners();
+
+        taco.forEach((student) => {
+          enrollStudent(student);
+        });
     };
 
 
@@ -433,30 +439,24 @@ const deathEaters = [
 
 //expel student to death eater array
 
-const expelStudent = () => {
-  document.querySelector("#cardContainer").addEventListener("click", (evt) => {
-  if (evt.target.id.includes("expel")) {
-    const [method, id] = evt.target.id.split("--");
-    const index = students.findIndex(student => student.id === parseInt(id)); 
-    const remove = students.splice(index, 1)
-    deathEaters.push(...remove);
-    deathEatersOnDom(deathEaters);
-  }
-})
- document.querySelector("#cardContainer").removeEventListener("click", (evt))
+const expelStudent = (student) => {
+  document.querySelector(`#expel--${student.id}`).addEventListener("click", (evt) => {
+      const [method, id] = evt.target.id.split("--");
+      const index = students.findIndex(student => student.id === parseInt(id)); 
+      const remove = students.splice(index, 1)
+      deathEaters.push(...remove);
+      deathEatersOnDom(deathEaters);
+    })
 };
 
-const enrollStudent = () => {
-  document.querySelector("#cardContainer").addEventListener("click", (evt) => {
-  if (evt.target.id.includes("enroll")) {
+const enrollStudent = (deathEater) => {
+  document.querySelector(`#enroll--${deathEater.id}`).addEventListener("click", (evt) => {
     const [method, id] = evt.target.id.split("--");
     const index = deathEaters.findIndex(deathEater => deathEater.id === parseInt(id)); 
     const remove = deathEaters.splice(index, 1)
     students.push(...remove);
     cardsOnDom(students);
-  }
-})
-
+  })
 };
 
 
