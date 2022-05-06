@@ -26,7 +26,7 @@ const welcome = () => {
         the Sorting Hat can't see,
         so try me on and I will tell you
         where you ought to be."</p>
-        <button id="openSortingPage" class="btn btn-primary">SORT</button>
+        <button id="openSortingPage" class="btn btn-primary">SORTING HAT</button>
       </div>
       </div>`
 
@@ -54,25 +54,26 @@ const sortingPage = () => {
       <h5 class="card-title">Enter Name to be Sorted</h5>
       <div class="mb-3">
         <form>
-        <input type="name" class="form-control" id="studentNameForm" placeholder="First and Last Name">
+        <input type="name" class="form-control" id="studentNameForm" placeholder="First and Last Name" required>
         </form>
         </div>
       <p class="card-text">So put me on! Don't be afraid!
       And don't get in a flap!
       You're in safe hands (though I have none)
       for I'm a Thinking Cap!"</p>
-      <button id="performSorting" class="btn btn-primary">SORT</button>
+      <button id="performSorting" class="btn btn-primary" type="submit">SORT</button>
       </div>
       </div>`
 
   
       renderToDom("#cardContainer", cardString);
-      renderToDom("#buttonContainer", buttonString)
+      renderToDom("#buttonContainer", buttonString);
 
       document.querySelector("#performSorting").addEventListener("click", sortingHat);
-
       houseListeners();
-    };
+      const input = document.getElementById("#studentNameForm").required = true;
+      input.setAttribute('required', '');
+};
 
 
     const cardsOnDom = (taco) => {
@@ -332,49 +333,41 @@ const students = [
     id: 1,
     name: "Kristen Chandler",
     house: "Ravenclaw",
-    deathEater: false
   },
   {
     id: 2,
     name: "Ryann Chandler",
     house: "Gryffindor",
-    deathEater: false
   },
   {
     id: 3,
     name: "Elizabeth Witt",
     house: "Slytherin",
-    deathEater: false
   },
   {
     id: 4,
     name: "Shirley Stever",
     house: "Hufflepuff",
-    deathEater: false
   },
   {
     id: 5,
     name: "Rick Stever",
     house: "Hufflepuff",
-    deathEater: false
   },
   {
     id: 6,
     name: "Jeff Stever",
     house: "Ravenclaw",
-    deathEater: false
   },
   {
     id: 7,
     name: "Meghan Womack",
     house: "Slytherin",
-    deathEater: false
   },
   {
     id: 8,
     name: "James Chandler",
     house: "Gryffindor",
-    deathEater: false
   },
 ]
 
@@ -394,7 +387,6 @@ const addStudent = () => {
     id: addNextId(), 
     name: formNameCapture, 
     house: randomHouse, 
-    deathEater: false
   }
   students.push(newStudent);
   return newStudent;
@@ -425,13 +417,11 @@ const deathEaters = [
     id: 1,
     name: "Bellatrix Lestrange",
     house: "Slytherin",
-    deathEater: true
   },
   {
     id: 2,
     name: "Lucius Malfoy",
     house: "Slytherin",
-    deathEater: true
   }
 ]
 
