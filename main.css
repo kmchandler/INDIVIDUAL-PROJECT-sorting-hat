@@ -1,5 +1,6 @@
 body {
   background-image: url(https://i.ytimg.com/vi/4qxUAoFOd4s/maxresdefault.jpg);
+  font-family: 'Yusei Magic', sans-serif;
 }
 
 #cardContainer {
@@ -7,6 +8,7 @@ body {
   flex-flow: row wrap;
   justify-content: space-evenly;
   padding: 20px;
+  font-family: 'Yusei Magic', sans-serif;
 }
 
 #deathEaterCards {
