@@ -52,16 +52,16 @@ const sortingPage = () => {
       <div id="sortingCard" class="card">
       <div class="card-body">
       <h5 class="card-title">Enter Name to be Sorted</h5>
-      <div class="mb-3">
-        <form>
+      <form id="nameForm">
+        <div class="mb-3">
         <input type="name" class="form-control" id="studentNameForm" placeholder="First and Last Name" required>
-        </form>
         </div>
-      <p class="card-text">So put me on! Don't be afraid!
-      And don't get in a flap!
-      You're in safe hands (though I have none)
-      for I'm a Thinking Cap!"</p>
-      <button id="performSorting" class="btn btn-primary" type="submit">SORT</button>
+         <p class="card-text">So put me on! Don't be afraid!
+         And don't get in a flap!
+         You're in safe hands (though I have none)
+         for I'm a Thinking Cap!"</p>
+         <button id="performSorting" class="btn btn-primary" type="submit">SORT</button>
+      </form>
       </div>
       </div>`
 
@@ -69,10 +69,8 @@ const sortingPage = () => {
       renderToDom("#cardContainer", cardString);
       renderToDom("#buttonContainer", buttonString);
 
-      document.querySelector("#performSorting").addEventListener("click", sortingHat);
+      document.querySelector("#nameForm").addEventListener("submit", sortingHat);
       houseListeners();
-      const input = document.getElementById("#studentNameForm").required = true;
-      input.setAttribute('required', '');
 };
 
 
